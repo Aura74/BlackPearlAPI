@@ -16,8 +16,9 @@ using Microsoft.AspNetCore.Mvc.Formatters;
 using Microsoft.EntityFrameworkCore;
 using Swashbuckle.AspNetCore.SwaggerUI;
 
-//using DbCRUDReposLib;
-//using DbContextLib;
+using NecklaceCRUD;
+using NecklaceDB;
+using NecklaceModels;
 
 namespace DbAppWebApi
 {
@@ -34,10 +35,10 @@ namespace DbAppWebApi
         public void ConfigureServices(IServiceCollection services)
         {
             //Add the DbContext to the services
-            var connectionString = AppConfig.ConfigurationRoot.GetConnectionString("SQLServer_seidowebservice");
+            var connectionString = AppConfig.ConfigurationRoot.GetConnectionString("SQLServer_necklace");
             AppLog.Instance.LogDBConnection(connectionString);
 
-            services.AddDbContext<SeidoDbContext>(options => options.UseSqlServer(connectionString));
+            services.AddDbContext<NecklaceDbContext>(options => options.UseSqlServer(connectionString));
             services.AddControllers();
 
             services.AddSwaggerGen(c =>

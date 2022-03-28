@@ -15,14 +15,14 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.3.0" />
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="DbContextLib">
-      <HintPath>..\..\SeidoDbCRUDE_SQLServer\publish\DbContextLib.dll</HintPath>
+    <Reference Include="NecklaceCRUD">
+      <HintPath>..\Dependencies\NecklaceCRUD.dll</HintPath>
     </Reference>
-    <Reference Include="DbCRUDReposLib">
-      <HintPath>..\..\SeidoDbCRUDE_SQLServer\publish\DbCRUDReposLib.dll</HintPath>
+    <Reference Include="NecklaceDB">
+      <HintPath>..\Dependencies\NecklaceDB.dll</HintPath>
     </Reference>
-    <Reference Include="DbModelsLib">
-      <HintPath>..\..\SeidoDbCRUDE_SQLServer\publish\DbModelsLib.dll</HintPath>
+    <Reference Include="NecklaceModels">
+      <HintPath>..\Dependencies\NecklaceModels.dll</HintPath>
     </Reference>
   </ItemGroup>
 
