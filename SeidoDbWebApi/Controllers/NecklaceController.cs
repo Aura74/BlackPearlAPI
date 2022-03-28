@@ -25,8 +25,8 @@ namespace SeidoDbWebApi.Controllers
         [ProducesResponseType(200, Type = typeof(IEnumerable<Necklace>))]
         public async Task<IEnumerable<Necklace>> GetNecklaces()
         {
-            var necklace = await _repo.ReadAllAsync();
-            return necklace;
+            var necklaces = await _repo.ReadAllAsync();
+            return necklaces;
         }
 
         //GET: api/customers/id
