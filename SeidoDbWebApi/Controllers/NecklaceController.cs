@@ -70,7 +70,7 @@ namespace SeidoDbWebApi.Controllers
             }
             if (custGuid != cust.CustomerID)
             {
-                return BadRequest("Customer ID mismatch");
+                return BadRequest("Necklace ID mismatch");
             }
 
             cust = await _repo.UpdateAsync(cust);

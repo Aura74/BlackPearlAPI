@@ -16,8 +16,8 @@ using Microsoft.AspNetCore.Mvc.Formatters;
 using Microsoft.EntityFrameworkCore;
 using Swashbuckle.AspNetCore.SwaggerUI;
 
-using DbCRUDReposLib;
-using DbContextLib;
+//using DbCRUDReposLib;
+//using DbContextLib;
 
 namespace DbAppWebApi
 {
@@ -47,7 +47,7 @@ namespace DbAppWebApi
 
 
             //Dependency Injection for the controller class constructors
-            services.AddScoped<ICustomerRepository, CustomerRepository>();
+            services.AddScoped<INecklaceRepository, NecklaceRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
