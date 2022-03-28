@@ -23,18 +23,10 @@ namespace SeidoDbWebApi.Controllers
         //Below are good practice decorators to use for a GET request
         [HttpGet]
         [ProducesResponseType(200, Type = typeof(IEnumerable<Necklace>))]
-        public async Task<IEnumerable<Necklace>> GetCustomers(string country)
+        public async Task<IEnumerable<Necklace>> GetNecklaces()
         {
-            if (string.IsNullOrWhiteSpace(country))
-            {
-                var cus = await _repo.ReadAllAsync();
-                return cus;
-            }
-            else
-            {
-                var list = await _repo.ReadAllAsync();
-                return list.Where(cust => cust.Country == country);
-            }
+            var cus = await _repo.ReadAllAsync();
+            return cus;
         }
 
         //GET: api/customers/id
