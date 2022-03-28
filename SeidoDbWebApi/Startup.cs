@@ -1,24 +1,14 @@
-using System;
-using System.IO;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
-using Microsoft.AspNetCore.Mvc.Formatters;
 using Microsoft.EntityFrameworkCore;
 using Swashbuckle.AspNetCore.SwaggerUI;
 
 using NecklaceCRUD;
 using NecklaceDB;
-using NecklaceModels;
 
 namespace DbAppWebApi
 {
@@ -46,7 +36,6 @@ namespace DbAppWebApi
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "DbWebApi", Version = "v1" });
             });
 
-
             //Dependency Injection for the controller class constructors
             services.AddScoped<INecklaceRepository, NecklaceRepository>();
         }
@@ -67,16 +56,8 @@ namespace DbAppWebApi
                 app.UseDeveloperExceptionPage();                
             }
 
-            //app.UseHttpsRedirection();
-
             app.UseRouting();
-
-            //app.UseAuthorization();
-
-            app.UseEndpoints(endpoints =>
-            {
-                endpoints.MapControllers();
-            });
+            app.UseEndpoints(endpoints => endpoints.MapControllers() );
         }
     }
 }
