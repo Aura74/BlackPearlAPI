@@ -13,8 +13,8 @@ using NecklaceModels;
 
 namespace SeidoDbWebApi.Controllers
 {
-    [Route("api/[controller]")]
     [ApiController]
+    [Route("api/[controller]")]
     public class NecklaceController : ControllerBase
     {
         private INecklaceRepository _repo;
@@ -153,7 +153,8 @@ namespace SeidoDbWebApi.Controllers
         public NecklaceController(INecklaceRepository repo, ILogger<NecklaceController> logger)
         {
             _repo = repo;
-            AppLog.Instance.LogInformation("CustomersController started");
+            logger.LogInformation("NecklaceController started");
+            //AppLog.Instance.LogInformation("NecklaceController started");
         }
     }
 }
