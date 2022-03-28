@@ -7,6 +7,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
+using NecklaceCRUD;
+using NecklaceDB;
+using NecklaceModels;
+
 namespace SeidoDbWebApi.Controllers
 {
     [Route("api/[controller]")]
