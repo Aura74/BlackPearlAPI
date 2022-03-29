@@ -117,31 +117,31 @@ namespace SeidoDbWebApi.Controllers
         [ProducesResponseType(201)]
         [ProducesResponseType(400)]
         [ProducesResponseType(404)]
-        public async Task<IActionResult> CreateCustomer([FromBody] Necklace cust)
+        public async Task<IActionResult> CreateCustomer([FromBody] Necklace neck)
         {
-            if (cust == null)
+            if (neck == null)
             {
                 return BadRequest("No Necklace");
             }
-            if (await _repo.ReadAsync(cust.CustomerID) != null)
+            if (await _repo.ReadAsync(neck.NecklaceID) != null)
             {
                 return BadRequest("Necklace ID already existing");
             }
 
-            cust = await _repo.CreateAsync(cust);
-            if (cust != null)
+            neck = await _repo.CreateAsync(neck);
+            if (neck != null)
             {
                 //201 created ok with url details to read newlys created Necklace
                 return CreatedAtRoute(
 
                     //Named Route in the HttpGet request
-                    routeName: nameof(GetCustomer),
+                    routeName: nameof(GetNecklace),
 
                     //custId is the parameter in HttpGet
-                    routeValues: new { custId = cust.CustomerID.ToString().ToLower() },
+                    routeValues: new { neckId = neck.NecklaceID.ToString().ToLower() },
 
                     //Customer detail in the Body
-                    value: cust);
+                    value: neck);
             }
             else
             {
