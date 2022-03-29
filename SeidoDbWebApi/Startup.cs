@@ -38,6 +38,13 @@ namespace DbAppWebApi
 
             //Dependency Injection for the controller class constructors
             services.AddScoped<INecklaceRepository, NecklaceRepository>();
+
+            // Handle recursion loop?
+            services.AddMvc()
+             .AddJsonOptions(opt =>
+             {
+                 opt.JsonSerializerOptions.ReferenceHandler = System.Text.Json.Serialization.ReferenceHandler.Preserve;
+             });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
