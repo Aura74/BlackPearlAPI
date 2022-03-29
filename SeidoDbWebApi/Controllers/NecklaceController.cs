@@ -18,6 +18,7 @@ namespace SeidoDbWebApi.Controllers
     public class NecklaceController : ControllerBase
     {
         private INecklaceRepository _repo;
+        private ILogger _logger;
 
         //GET: api/necklace
         //Below are good practice decorators to use for a GET request
@@ -153,8 +154,8 @@ namespace SeidoDbWebApi.Controllers
         public NecklaceController(INecklaceRepository repo, ILogger<NecklaceController> logger)
         {
             _repo = repo;
-            logger.LogInformation("NecklaceController started");
-            //AppLog.Instance.LogInformation("NecklaceController started");
+            _logger = logger;
+            _logger.LogInformation("NecklaceController started");
         }
     }
 }
