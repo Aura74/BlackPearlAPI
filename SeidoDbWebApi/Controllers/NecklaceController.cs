@@ -29,8 +29,8 @@ namespace SeidoDbWebApi.Controllers
             return necklaces;
         }
 
-        //GET: api/customers/id
-        [HttpGet("{custId}", Name = nameof(GetNecklace))]
+        //GET: api/necklace/id
+        [HttpGet("{neckId}", Name = nameof(GetNecklace))]
         [ProducesResponseType(200, Type = typeof(Necklace))]
         [ProducesResponseType(400)]
         [ProducesResponseType(404)]
