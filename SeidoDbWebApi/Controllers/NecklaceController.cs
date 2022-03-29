@@ -82,32 +82,32 @@ namespace SeidoDbWebApi.Controllers
         }
 
         //DELETE: api/necklace/id
-        [HttpDelete("{custId}")]
+        [HttpDelete("{necklaceId}")]
         [ProducesResponseType(204)]
         [ProducesResponseType(400)]
         [ProducesResponseType(404)]
-        public async Task<IActionResult> DeleteCustomer(string custId)
+        public async Task<IActionResult> DeleteNecklace(string necklaceId)
         {
-            if (!Guid.TryParse(custId, out Guid custGuid))
+            if (!int.TryParse(necklaceId, out int nId))
             {
-                return BadRequest("Guid format error");
+                return BadRequest("int format error");
             }
 
-            Necklace cust = await _repo.ReadAsync(custGuid);
-            if (cust == null)
+            Necklace neck = await _repo.ReadAsync(nId);
+            if (neck == null)
             {
                 return NotFound();
             }
 
-            cust = await _repo.DeleteAsync(custGuid);
-            if (cust != null)
+            neck = await _repo.DeleteAsync(nId);
+            if (neck != null)
             {
                 //Send an empty body response to confirm
                 return new NoContentResult();
             }
             else
             {
-                return BadRequest("Customer found but could not be deleted");
+                return BadRequest("Necklace found but could not be deleted");
             }
         }
 
