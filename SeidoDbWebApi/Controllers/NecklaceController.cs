@@ -93,13 +93,13 @@ namespace SeidoDbWebApi.Controllers
                 return BadRequest("int format error");
             }
 
-            Necklace cust = await _repo.ReadAsync(nId);
+            Necklace neck = await _repo.ReadAsync(nId);
             if (neck == null)
             {
                 return NotFound();
             }
 
-            cust = await _repo.DeleteAsync(nId);
+            neck = await _repo.DeleteAsync(nId);
             if (neck != null)
             {
                 //Send an empty body response to confirm
