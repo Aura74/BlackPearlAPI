@@ -54,23 +54,23 @@ namespace SeidoDbWebApi.Controllers
 
         //PUT: api/necklace/id
         //Body: Necklace in Json
-        [HttpPut("{custId}")]
+        [HttpPut("{neckId}")]
         [ProducesResponseType(204)]
         [ProducesResponseType(400)]
         [ProducesResponseType(404)]
-        public async Task<IActionResult> UpdateCustomer(string custId, [FromBody] Necklace cust)
+        public async Task<IActionResult> UpdateCustomer(string neckId, [FromBody] Necklace neck)
         {
-            if (!Guid.TryParse(custId, out Guid custGuid))
+            if (!int.TryParse(neckId, out int necklaceId))
             {
-                return BadRequest("Guid format error");
+                return BadRequest("Int format error");
             }
-            if (custGuid != cust.CustomerID)
+            if (necklaceId != neck.NecklaceID)
             {
                 return BadRequest("Necklace ID mismatch");
             }
 
-            cust = await _repo.UpdateAsync(cust);
-            if (cust != null)
+            neck = await _repo.UpdateAsync(neck);
+            if (neck != null)
             {
                 //Send an empty body response to confirm
                 return new NoContentResult();
