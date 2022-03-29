@@ -54,7 +54,7 @@ namespace SeidoDbWebApi.Controllers
 
         //PUT: api/necklace/id
         //Body: Necklace in Json
-        [HttpPut("{custId}")]
+        [HttpPut("{neckId}")]
         [ProducesResponseType(204)]
         [ProducesResponseType(400)]
         [ProducesResponseType(404)]
@@ -64,12 +64,12 @@ namespace SeidoDbWebApi.Controllers
             {
                 return BadRequest("Int format error");
             }
-            if (neckId != neck.NecklaceID)
+            if (necklaceId != neck.NecklaceID)
             {
                 return BadRequest("Necklace ID mismatch");
             }
 
-            Necklace neck = await _repo.UpdateAsync(necklaceId);
+            neck = await _repo.UpdateAsync(neck);
             if (neck != null)
             {
                 //Send an empty body response to confirm
