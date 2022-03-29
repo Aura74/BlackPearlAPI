@@ -43,7 +43,9 @@ namespace DbAppWebApi
             services.AddMvc()
              .AddJsonOptions(opt =>
              {
-                 opt.JsonSerializerOptions.ReferenceHandler = System.Text.Json.Serialization.ReferenceHandler.Preserve;
+                 //opt.JsonSerializerOptions.ReferenceHandler = System.Text.Json.Serialization.ReferenceHandler.Preserve;
+                 opt.JsonSerializerOptions.ReferenceHandler = System.Text.Json.Serialization.ReferenceHandler.IgnoreCycles;
+                 opt.JsonSerializerOptions.WriteIndented = true;
              });
         }
 
