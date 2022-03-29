@@ -59,7 +59,7 @@ namespace SeidoDbWebApi.Controllers
         [ProducesResponseType(204)]
         [ProducesResponseType(400)]
         [ProducesResponseType(404)]
-        public async Task<IActionResult> UpdateCustomer(string neckId, [FromBody] Necklace neck)
+        public async Task<IActionResult> UpdateNecklace(string neckId, [FromBody] Necklace neck)
         {
             if (!int.TryParse(neckId, out int necklaceId))
             {
@@ -118,7 +118,7 @@ namespace SeidoDbWebApi.Controllers
         [ProducesResponseType(201)]
         [ProducesResponseType(400)]
         [ProducesResponseType(404)]
-        public async Task<IActionResult> CreateCustomer([FromBody] Necklace neck)
+        public async Task<IActionResult> CreateNecklace([FromBody] Necklace neck)
         {
             if (neck == null)
             {
