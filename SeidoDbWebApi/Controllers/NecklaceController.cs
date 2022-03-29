@@ -117,7 +117,7 @@ namespace SeidoDbWebApi.Controllers
         [ProducesResponseType(201)]
         [ProducesResponseType(400)]
         [ProducesResponseType(404)]
-        public async Task<IActionResult> CreateCustomer([FromBody] Necklace neck)
+        public async Task<IActionResult> CreateNecklace([FromBody] Necklace neck)
         {
             if (neck == null)
             {
