@@ -30,21 +30,21 @@ namespace SeidoDbWebApi.Controllers
         }
 
         //GET: api/customers/id
-        [HttpGet("{custId}", Name = nameof(GetCustomer))]
+        [HttpGet("{custId}", Name = nameof(GetNecklace))]
         [ProducesResponseType(200, Type = typeof(Necklace))]
         [ProducesResponseType(400)]
         [ProducesResponseType(404)]
-        public async Task<IActionResult> GetCustomer(string custId)
+        public async Task<IActionResult> GetNecklace(string neckId)
         {
-            if (!Guid.TryParse(custId, out Guid custGuid))
+            if (!int.TryParse(neckId, out int necklaceId))
             {
-                return BadRequest("Guid format error");
+                return BadRequest("Int format error");
             }
-            Necklace cust = await _repo.ReadAsync(custGuid);
-            if (cust != null)
+            Necklace neck = await _repo.ReadAsync(necklaceId);
+            if (neck != null)
             {
                 //cust is returned in the body
-                return Ok(cust);
+                return Ok(neck);
             }
             else
             {
