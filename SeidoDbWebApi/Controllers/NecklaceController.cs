@@ -124,15 +124,24 @@ namespace SeidoDbWebApi.Controllers
             {
                 return BadRequest("No Necklace");
             }
-            if (await _repo.ReadAsync(neck.NecklaceID) != null)
+
+            var newNecklace = new Necklace();
+
+            foreach(var p in neck.Pearls)
             {
-                return BadRequest("Necklace ID already existing");
+                var newPearl = new Pearl();
+                newPearl.Size = p.Size;
+                newPearl.Color = p.Color;
+                newPearl.Shape = p.Shape;
+                newPearl.Type = p.Type;
+
+                newNecklace.Pearls.Add(newPearl);
             }
 
-            neck = await _repo.CreateAsync(neck);
+            neck = await _repo.CreateAsync(newNecklace);
             if (neck != null)
             {
-                //201 created ok with url details to read newlys created Necklace
+                //201 created ok with url details to read newly created Necklace
                 return CreatedAtRoute(
 
                     //Named Route in the HttpGet request
