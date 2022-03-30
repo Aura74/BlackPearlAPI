@@ -41,10 +41,9 @@ namespace SeidoDbWebApi.Controllers
             {
                 return BadRequest("Int format error");
             }
-            Necklace neck = await _repo.ReadAsync(necklaceId);
+            var neck = await _repo.ReadAsync(necklaceId);
             if (neck != null)
             {
-                //cust is returned in the body
                 return Ok(neck);
             }
             else
